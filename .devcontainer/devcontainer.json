@@ -1,0 +1,23 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/alpine
+{
+	"name": "Alpine",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/base:alpine-3.20",
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/customink/codespaces-features/common-amzn:1": {},
+		"ghcr.io/prulloac/devcontainer-features/latex:1": {},
+		"ghcr.io/bartventer/arch-devcontainer-features/common-utils:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"GitHub.copilot",
+				"james-yu.latex-workshop",
+				"ms-vsliveshare.vsliveshare"
+			]
+		}
+	},
+	"postCreateCommand": "apk update && apk add bash chktex latexmk texlive && tlmgr install biblatex natbib graphics graphicx multirow xcolor colortbl booktabs tabu wrapfig parskip setspace titlesec titletoc enumitem caption threeparttable"
+}
