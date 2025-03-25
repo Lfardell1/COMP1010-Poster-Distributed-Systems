@@ -3,12 +3,6 @@
 ## Project Title:
 Optimizing Peer-to-Peer Data Distribution and Fault Tolerance in Torrent Networks
 
-## Authors:
-- Leon
-- Lucas
-- Elliot
-- Samuel
-- Jesse
 
 ## Overview:
 This project investigates methods for enhancing the efficiency, reliability, and fault tolerance of peer-to-peer (P2P) data distribution, with a particular focus on torrent networks. The research includes a detailed analysis of existing algorithms, identification of critical performance factors, and exploration of potential improvements through advanced data handling and redundancy techniques.
