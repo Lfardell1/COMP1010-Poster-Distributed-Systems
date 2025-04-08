@@ -13,5 +13,5 @@
 			]
 		}
 	},
-	"postCreateCommand": "apk update && apk add bash chktex latexmk texlive && tlmgr install biblatex natbib graphics graphicx multirow xcolor colortbl booktabs tabu wrapfig parskip setspace titlesec titletoc enumitem caption threeparttable"
+	"postCreateCommand": "apk update && apk add bash chktex latexmk texlive-full"
 }
