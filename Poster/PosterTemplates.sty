@@ -1,0 +1,122 @@
+% Command to create a banner at the top of the poster
+% #1: Title of the banner
+% #2: Subtitle of the banner
+\newcommand{\addbanner}[2]{
+    \begin{center}
+        \colorbox{blue!20}{\parbox{\textwidth}{
+            \centering
+            \Huge\textbf{#1}\\[0.5em]
+            \Large #2
+        }}
+    \end{center}
+    \vspace{1cm}
+}
+
+% Command to add a section title
+% #1: Section title text
+\newcommand{\addsection}[1]{
+    \section{#1}
+}
+
+% Command to add a full-width figure with a caption
+% #1: Path to the image file
+% #2: Caption for the figure
+\newcommand{\addfigure}[2]{
+    \begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{#1}
+    \caption{#2}
+    \end{figure}
+}
+
+% Command to add a graphic with a custom width and caption
+% #1: Width of the image (e.g., 0.8\linewidth)
+% #2: Path to the image file
+% #3: Caption for the graphic
+\newcommand{\addgraphic}[3]{
+    \begin{figure}[h]
+    \centering
+    \includegraphics[width=#1]{#2}
+    \caption{#3}
+    \end{figure}
+}
+
+% Command to create a table with a caption
+% #1: Column formatting (e.g., lcc for left, center, center)
+% #2: Table content
+% #3: Caption for the table
+\newcommand{\addtable}[3]{
+    \begin{table}[h]
+    \centering
+    \begin{tabular}{#1}
+    #2
+    \end{tabular}
+    \caption{#3}
+    \end{table}
+}
+
+% Environment to create a bar chart
+% #1: Categories for the x-axis (comma-separated)
+\newenvironment{barchart}[1]{
+    \begin{center}
+    \begin{tikzpicture}
+    \begin{axis}[
+        ybar,
+        symbolic x coords={#1}, % Define x-axis categories
+        xtick=data,
+        ymin=0,
+        ylabel={Value}, % Label for the y-axis
+        xlabel={Category}, % Label for the x-axis
+        bar width=15pt,
+        nodes near coords, % Display values on top of bars
+        enlarge x limits=0.2
+    ]
+}{
+    \end{axis}
+    \end{tikzpicture}
+    \end{center}
+}
+
+% Command to create a pie chart
+% #1: Data for the pie chart (e.g., 30/A, 50/B, 20/C)
+% #2: Title for the pie chart
+\newcommand{\addpiechart}[2]{
+    \begin{center}
+    \textbf{#2}\\
+    \begin{tikzpicture}
+    \pie{#1}
+    \end{tikzpicture}
+    \end{center}
+}
+
+% Environment to create a line chart
+% #1: Title for the line chart
+\newenvironment{linechart}[1]{
+    \begin{center}
+    \begin{tikzpicture}
+    \begin{axis}[
+        title={#1}, % Title of the chart
+        xlabel={Peers}, % Label for the x-axis
+        ylabel={Download Speed (Mbps)}, % Label for the y-axis
+        xmin=0, xmax=100, % Range for the x-axis
+        ymin=0, ymax=10, % Range for the y-axis
+        grid=major, % Add grid lines
+        legend pos=north west % Position of the legend
+    ]
+}{
+    \end{axis}
+    \end{tikzpicture}
+    \end{center}
+}
+
+% Command to create an info box with a background color
+% #1: Background color (e.g., yellow!20)
+% #2: Text content for the info box
+\newcommand{\addinfobox}[2]{
+    \begin{center}
+    \colorbox{#1}{\parbox{0.9\linewidth}{
+        \textbf{#2}
+    }}
+    \end{center}
+    \vspace{1em}
+}

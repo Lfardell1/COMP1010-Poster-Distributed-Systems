@@ -1,75 +1,151 @@
-\documentclass[a0,landscape]{a0poster}
-\usepackage{multicol}
-\usepackage{graphicx}
-\usepackage{amsmath}
-\usepackage{natbib}
+\documentclass[a0paper,landscape]{a0poster}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} % Scalable font package
+\usepackage[english]{babel}
 \usepackage{geometry}
+\geometry{top=1cm, bottom=1cm, left=1cm, right=1cm}
 
-\geometry{top=1in, bottom=1in, left=1in, right=1in}
+\usepackage{sourcecodepro}
+\renewcommand{\familydefault}{\sfdefault} % Set Source Sans Pro as default font
 
-\title{Optimizing Peer-to-Peer Data Distribution and Fault Tolerance in Torrent Networks}
+% Essential packages
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\usepackage{pgf-pie}
+\pgfplotsset{compat=1.18}
+
+% Page style
+\rhead{Leon Example} % Right header
+\lhead{BitTorrent Distributed Systems} % Left header
+\rfoot{\thepage} % Footer with page number
+\setlength{\headheight}{14.5pt}
+
+% Section formatting
+\titleformat{\section}{\Large\bfseries}{\thesection.}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Load custom commands from PosterTemplates.sty
+\usepackage{PosterTemplates}
+
+% Document metadata
+\title{\Huge\textbf{How BitTorrent Optimises Distributed Systems}\\[0.5em]
+\Large Efficiency, Scalability, and Resilience in Modern File Sharing}
+\author{\Large Leon Example \\ \normalsize Distributed Systems Researcher}
+\date{April 2025}
+
+\setlength{\parskip}{1em}
+\setlength{\parindent}{0pt}
 
 \begin{document}
 
-% Center the title, authors, and logo
-\maketitle
+% Add banner using the custom command
+% Title: How BitTorrent Optimises Distributed Systems
+% Subtitle: Efficiency, Scalability, and Resilience in Modern File Sharing
+\addbanner{How BitTorrent Optimises Distributed Systems}{Efficiency, Scalability, and Resilience in Modern File Sharing}
 
-\begin{center}
-    \begin{minipage}{0.15\textwidth}
-        \includegraphics[width=0.3\textwidth]{logo.png} 
-    \end{minipage}%
-    \hfill
-    \begin{minipage}{0.85\textwidth}
-        \vspace{-0.5cm}
-        \centering
-        \huge \textbf{Optimizing Peer-to-Peer Data Distribution and Fault Tolerance in Torrent Networks} \\
-        \vspace{0.3cm}
-        \textit{Lucas Newman c3500964, Leon Fardell c3310032, Joshua Wagstaff c3524789} \\ % Insert your names & student ID numbers here
-        \vspace{0.3cm}
-        \small COMP1010, S1 2025
-    \end{minipage}
-\end{center}
+\begin{multicols}{3} % Start a 3-column layout
 
-\begin{abstract}
-Your abstract here (briefly summarize your research topic and main findings).
-\end{abstract}
+% -------------------------
+% Introduction Section
+\addsection{Introduction}
+BitTorrent is a peer-to-peer (P2P) protocol for efficient file sharing by breaking files into pieces and distributing them among users.
 
-% Start three-column layout for the body content
-\begin{multicols}{3}
-    \setlength{\columnsep}{20pt} % Adjust column spacing
+% Add a figure for the introduction
+\addfigure{img/placeholder.png}{Overview of P2P systems.}
 
-    \section{Introduction}
-    Introduction content here...
+% -------------------------
+% How BitTorrent Works Section
+\addsection{How BitTorrent Works}
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Torrent Files:} Contain metadata and hashes.
+  \item \textbf{Swarms:} Groups of peers sharing the file.
+  \item \textbf{Seeders vs Leechers:} Uploaders vs Downloaders.
+  \item \textbf{Piece-based Downloading:} File is split into parts.
+  \item \textbf{Trackers and DHT:} Help locate peers.
+\end{itemize}
 
-    \section{Technical Analysis}
-    Technical details here...
+% Add a figure for this section
+\addfigure{img/placeholder.png}{Swarm communication between peers.}
 
-    \section{Results}
-    Include visuals, graphs, and performance comparisons here...
+% -------------------------
+% Optimisations Section
+\addsection{Optimisations in BitTorrent}
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Parallel Downloads:} Multiple pieces from multiple peers.
+  \item \textbf{Rarest First:} Ensures availability of all pieces.
+  \item \textbf{Tit-for-Tat:} Rewards uploaders.
+  \item \textbf{Choking/Unchoking:} Dynamically prioritizes peers.
+\end{itemize}
 
-    \section{Discussion}
-    Discuss implications and ethical considerations here...
+% Add a figure for this section
+\addfigure{img/placeholder.png}{Peer lifecycle from leecher to seeder.}
 
-    \section{Conclusion}
-    Summarize key findings and future directions here...
+% -------------------------
+% Performance Comparison Section
+\addsection{Performance Comparison}
+\subsection{Scalability}
+Performance improves with more peers, unlike centralized systems.
 
-    \section*{References}
-    \bibliographystyle{plain}
-    \bibliography{references}  % Make sure your 'references.bib' file exists or use the 'thebibliography' environment
+\subsection{Resilience}
+Files are available even if some peers go offline.
 
-\end{multicols}
+% Add a bar chart
+\begin{barchart}{Scalability, Resilience, Efficiency}
+\addplot coordinates {(Scalability, 90) (Resilience, 80) (Efficiency, 95)};
+\end{barchart}
+
+% -------------------------
+% Real-World Applications Section
+\addsection{Real-World Applications}
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Linux Distros:} Ubuntu, Fedora, Arch
+  \item \textbf{Game Updates:} Used by Blizzard and Steam
+  \item \textbf{Enterprise:} Facebook used it internally
+\end{itemize}
+
+% Add a pie chart
+\addpiechart{30/Seeders, 50/Leechers, 20/Trackers}{Peer Distribution in a Swarm}
+
+% -------------------------
+% Challenges Section
+\addsection{Challenges and Limitations}
+\begin{itemize}[leftmargin=*]
+  \item \textbf{NAT Traversal:} Connection issues across firewalls.
+  \item \textbf{Initial Seeder Bottleneck:} Delays at startup.
+  \item \textbf{Security:} File integrity requires verification.
+  \item \textbf{Legal Issues:} Often associated with piracy.
+\end{itemize}
+
+% Add an info box
+\addinfobox{yellow!20}{Fun Fact: BitTorrent accounts for over 20\% of global internet traffic during peak hours.}
+
+% -------------------------
+% Conclusion Section
+\addsection{Conclusion}
+BitTorrent shows how P2P systems can outperform traditional models in scalability and efficiency. Future Web3 systems will likely build on similar architecture.
+
+% -------------------------
+% References Section
+\addsection{References}
+\begin{itemize}[leftmargin=*]
+  \item Cohen, B. (2003). Incentives Build Robustness in BitTorrent.
+  \item Norberg, A. (2008). BitTorrent Enhancement Proposals.\\
+  \url{https://www.bittorrent.org/beps/bep_0003.html}
+  \item Open Source Initiative. (2025). Legal Use Cases.\\
+  \url{https://opensource.org}
+\end{itemize}
+
+\end{multicols} % End of 3-column layout
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-% Easter Egg
