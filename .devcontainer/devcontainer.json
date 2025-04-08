@@ -4,12 +4,6 @@
 	"name": "Alpine",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/base:alpine-3.20",
-	"features": {
-		"ghcr.io/devcontainers/features/github-cli:1": {},
-		"ghcr.io/customink/codespaces-features/common-amzn:1": {},
-		"ghcr.io/prulloac/devcontainer-features/latex:1": {},
-		"ghcr.io/bartventer/arch-devcontainer-features/common-utils:1": {}
-	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
