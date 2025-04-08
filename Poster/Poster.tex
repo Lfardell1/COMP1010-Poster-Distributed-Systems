@@ -3,39 +3,60 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{natbib}
+\usepackage{geometry}
+
+% Adjust the margins for poster format
+\geometry{top=1in, bottom=1in, left=1in, right=1in}
 
 \title{Optimizing Peer-to-Peer Data Distribution and Fault Tolerance in Torrent Networks}
-\author{Group Members' Names}
-\date{COMP1010, S1 2025}
 
 \begin{document}
 
+% Center the title, authors, and logo
 \maketitle
+
+\begin{center}
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=1\textwidth]{logo.png} 
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.65\textwidth}
+        \vspace{-0.5cm}
+        \centering
+        \huge \textbf{Optimizing Peer-to-Peer Data Distribution and Fault Tolerance in Torrent Networks} \\
+        \vspace{0.3cm}
+        \textit{Lucas Newman c3500964, Leon Fardell c3310032} \\
+        \vspace{0.3cm}
+        \small COMP1010, S1 2025
+    \end{minipage}
+\end{center}
 
 \begin{abstract}
 Your abstract here (briefly summarize your research topic and main findings).
 \end{abstract}
 
+% Start three-column layout for the body content
 \begin{multicols}{3}
+    \setlength{\columnsep}{20pt} % Adjust column spacing
 
-\section{Introduction}
-Introduction content here...
+    \section{Introduction}
+    Introduction content here...
 
-\section{Technical Analysis}
-Technical details here...
+    \section{Technical Analysis}
+    Technical details here...
 
-\section{Results}
-Include visuals, graphs, and performance comparisons here...
+    \section{Results}
+    Include visuals, graphs, and performance comparisons here...
 
-\section{Discussion}
-Discuss implications and ethical considerations here...
+    \section{Discussion}
+    Discuss implications and ethical considerations here...
 
-\section{Conclusion}
-Summarize key findings and future directions here...
+    \section{Conclusion}
+    Summarize key findings and future directions here...
 
-\section*{References}
-\bibliographystyle{plain}
-\bibliography{references}
+    \section*{References}
+    \bibliographystyle{plain}
+    \bibliography{references}  % Make sure your 'references.bib' file exists or use the 'thebibliography' environment
 
 \end{multicols}
 
