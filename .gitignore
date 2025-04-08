@@ -27,3 +27,19 @@ build/
 # Dev container and GitHub workflows
 .devcontainer/
 .github/
+
+# auxiliary files
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
