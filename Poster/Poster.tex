@@ -1,85 +1,76 @@
-\documentclass[a0paper,landscape]{a0poster}
+\documentclass[landscape]{a0poster} 
+
+% encoding and font
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{lmodern} % Scalable font package
+\usepackage{lmodern}
 \usepackage[english]{babel}
+
+% Geometry
 \usepackage{geometry}
-\geometry{top=1cm, bottom=1cm, left=1cm, right=1cm}
+\geometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
 
-\usepackage{sourcecodepro}
-\renewcommand{\familydefault}{\sfdefault} % Set Source Sans Pro as default font
-
-% Essential packages
-\usepackage{graphicx}
+% Fonts and visuals
+\usepackage{graphicx, color, xcolor}
 \usepackage{multicol}
-\usepackage{color}
-\usepackage{hyperref}
-\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{amsmath, amssymb}
 \usepackage{booktabs}
 \usepackage{enumitem}
 \usepackage{titlesec}
-\usepackage{fancyhdr}
 \usepackage{caption}
-\usepackage{xcolor}
 \usepackage{pgfplots}
-\usepackage{pgf-pie}
 \pgfplotsset{compat=1.18}
 
-% Page style
-\rhead{Leon Example} % Right header
-\lhead{BitTorrent Distributed Systems} % Left header
-\rfoot{\thepage} % Footer with page number
-\setlength{\headheight}{14.5pt}
+% Charts and diagrams
+\usepackage{tikz}
+\usepackage{pgf-pie}
+
+% Fonts
+\usepackage{sourcecodepro}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{BitTorrent Distributed Systems}
+\rhead{Leon Example}
+\renewcommand{\headrulewidth}{1pt}
 
 % Section formatting
-\titleformat{\section}{\Large\bfseries}{\thesection.}{1em}{}
-\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\section}{\Large\bfseries\color{blue}}{}{0em}{}
+\titleformat{\subsection}{\large\bfseries\color{black}}{}{0em}{}
 
-% Load custom commands from PosterTemplates.sty
+% URL support
+\usepackage{hyperref}
+
+% Load custom layout helpers
 \usepackage{PosterTemplates}
-
-% Document metadata
-\title{\Huge\textbf{How BitTorrent Optimises Distributed Systems}\\[0.5em]
-\Large Efficiency, Scalability, and Resilience in Modern File Sharing}
-\author{\Large Leon Example \\ \normalsize Distributed Systems Researcher}
-\date{April 2025}
-
-\setlength{\parskip}{1em}
-\setlength{\parindent}{0pt}
 
 \begin{document}
 
-% Add banner using the custom command
-% Title: How BitTorrent Optimises Distributed Systems
-% Subtitle: Efficiency, Scalability, and Resilience in Modern File Sharing
-\addbanner{How BitTorrent Optimises Distributed Systems}{Efficiency, Scalability, and Resilience in Modern File Sharing}
+% Title Banner
+\maketitlebar{How BitTorrent Optimises Distributed Systems for Peer-to-Peer File Transfers}
 
-\begin{multicols}{3} % Start a 3-column layout
+\begin{multicols*}{3}
 
-% -------------------------
-% Introduction Section
-\addsection{Introduction}
-BitTorrent is a peer-to-peer (P2P) protocol for efficient file sharing by breaking files into pieces and distributing them among users.
+  \addsection{What is BitTorrent?}
+BitTorrent is a peer-to-peer protocol and software for sending files over the internet, which allows users to send large files over the internet by connecting multiple sources at the same time, rather than relying on a single server to do it instead.
 
-% Add a figure for the introduction
+\addsection{Why do we need it? Limitations of traditional file transfer}
+Traditional methods like email or FTP lack any security and have limited data sharing. This can lead to data inconsistency and redundancy. These methods also struggle with larger file sizes and complex data sharing. Other methods like using centralised servers, also introduce problems like single points of failure, potential data loss or corruption and many more.
+
+\addsection{Importance of distributed systems and P2P architecture}
+Distributed systems are an essential part for today’s modern computing needs, with their abilities such as enhanced scalability, fault tolerance and other factors that make them great for handling large-scale data transfer and processing. The P2P architecture allows our distributed systems to eliminate central authority by allowing nodes to function both as clients and servers, which then improves the systems resilience to faults as there no longer is a single point of failure. It also further improves scalability as new nodes are able to seamlessly be joined into the network.
+
 \addfigure{img/placeholder.png}{Overview of P2P systems.}
 
-% -------------------------
-% How BitTorrent Works Section
 \addsection{How BitTorrent Works}
-\begin{itemize}[leftmargin=*]
-  \item \textbf{Torrent Files:} Contain metadata and hashes.
-  \item \textbf{Swarms:} Groups of peers sharing the file.
-  \item \textbf{Seeders vs Leechers:} Uploaders vs Downloaders.
-  \item \textbf{Piece-based Downloading:} File is split into parts.
-  \item \textbf{Trackers and DHT:} Help locate peers.
-\end{itemize}
+Bittorrent works by locating other computers using the same software that have the file you wish to download. These other computers are ordinary computers like your own that are known as peers.
+The process starts by finding a link for the file you want. Your bittorrent client software will then communicate with a tracker to find other computers running BitTorrent that have the complete file (known as seed computers) and those with portions of the file, these are typically peers in the process of downloading said file. The tracker identifies the swarm, which is a group of connected computers that have all or a portion of the file and are also in the process of sending or receiving it. The tracker then helps trade pieces of the file you want with others in the swarm, you can also receive multiple pieces of the files at once.
 
-% Add a figure for this section
 \addfigure{img/placeholder.png}{Swarm communication between peers.}
 
-% -------------------------
-% Optimisations Section
 \addsection{Optimisations in BitTorrent}
 \begin{itemize}[leftmargin=*]
   \item \textbf{Parallel Downloads:} Multiple pieces from multiple peers.
@@ -87,38 +78,25 @@ BitTorrent is a peer-to-peer (P2P) protocol for efficient file sharing by breaki
   \item \textbf{Tit-for-Tat:} Rewards uploaders.
   \item \textbf{Choking/Unchoking:} Dynamically prioritizes peers.
 \end{itemize}
-
-% Add a figure for this section
 \addfigure{img/placeholder.png}{Peer lifecycle from leecher to seeder.}
 
-% -------------------------
-% Performance Comparison Section
 \addsection{Performance Comparison}
-\subsection{Scalability}
+\subsection*{Scalability}
 Performance improves with more peers, unlike centralized systems.
-
-\subsection{Resilience}
+\subsection*{Resilience}
 Files are available even if some peers go offline.
-
-% Add a bar chart
 \begin{barchart}{Scalability, Resilience, Efficiency}
-\addplot coordinates {(Scalability, 90) (Resilience, 80) (Efficiency, 95)};
+\addplot coordinates {(Scalability,90) (Resilience,80) (Efficiency,95)};
 \end{barchart}
 
-% -------------------------
-% Real-World Applications Section
 \addsection{Real-World Applications}
 \begin{itemize}[leftmargin=*]
   \item \textbf{Linux Distros:} Ubuntu, Fedora, Arch
   \item \textbf{Game Updates:} Used by Blizzard and Steam
   \item \textbf{Enterprise:} Facebook used it internally
 \end{itemize}
-
-% Add a pie chart
 \addpiechart{30/Seeders, 50/Leechers, 20/Trackers}{Peer Distribution in a Swarm}
 
-% -------------------------
-% Challenges Section
 \addsection{Challenges and Limitations}
 \begin{itemize}[leftmargin=*]
   \item \textbf{NAT Traversal:} Connection issues across firewalls.
@@ -126,26 +104,18 @@ Files are available even if some peers go offline.
   \item \textbf{Security:} File integrity requires verification.
   \item \textbf{Legal Issues:} Often associated with piracy.
 \end{itemize}
-
-% Add an info box
 \addinfobox{yellow!20}{Fun Fact: BitTorrent accounts for over 20\% of global internet traffic during peak hours.}
 
-% -------------------------
-% Conclusion Section
 \addsection{Conclusion}
 BitTorrent shows how P2P systems can outperform traditional models in scalability and efficiency. Future Web3 systems will likely build on similar architecture.
 
-% -------------------------
-% References Section
-\addsection{References}
-\begin{itemize}[leftmargin=*]
-  \item Cohen, B. (2003). Incentives Build Robustness in BitTorrent.
-  \item Norberg, A. (2008). BitTorrent Enhancement Proposals.\\
-  \url{https://www.bittorrent.org/beps/bep_0003.html}
-  \item Open Source Initiative. (2025). Legal Use Cases.\\
-  \url{https://opensource.org}
-\end{itemize}
+% references 
+\nocite{*}
+\footnotesize
+\bibliographystyle{plain}
+\bibliography{../Bibliography/References}
 
-\end{multicols} % End of 3-column layout
+
+\end{multicols*}
 
 \end{document}
